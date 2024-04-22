@@ -1,5 +1,5 @@
 pyrogram
-paho.mqtt.client
+paho-mqtt
 time
 datetime
 threading
