@@ -1,4 +1,4 @@
 pyrogram
 paho-mqtt
 datetime
-threading
+threaded
