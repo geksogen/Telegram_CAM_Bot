@@ -10,6 +10,10 @@ import buttons
 import keyboards
 from custom_filters import button_filter
 
+import logging
+import logging.config
+
+
 
 API_ID = 21497875
 API_HASH = '7f95a52a1683a9be79d8813da6056a42'
@@ -52,6 +56,11 @@ mqttc.connect(MQTT_HOST, MQTT_PORT, MQTT_KEEPALIVE)
 tr = threading.Thread(target=mqttc.loop_start())
 tr.start()
 
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+
 bot = Client(
  api_id=API_ID,
  api_hash=API_HASH,
@@ -65,6 +74,8 @@ bot = Client(
 # https://t.me/raw_data_bot # ID chat
 
 chat_id = -4161519996
+
+
 
 @bot.on_message(filters=filters.command('start'))
 async def time_command(client: Client, message: Message):
