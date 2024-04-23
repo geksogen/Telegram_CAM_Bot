@@ -10,8 +10,6 @@ import keyboards
 from custom_filters import button_filter
 
 
-import logging.config
-
 import asyncio
 from aiohttp import ClientSession
 
@@ -55,10 +53,6 @@ mqttc.connect(MQTT_HOST, MQTT_PORT, MQTT_KEEPALIVE)
 
 tr = threading.Thread(target=mqttc.loop_start())
 tr.start()
-
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 
 bot = Client(
