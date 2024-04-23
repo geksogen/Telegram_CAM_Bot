@@ -24,6 +24,7 @@ def flask_func():
         # Process the data and perform actions based on the event
         print("Received webhook data:", data)
         return jsonify({'message': 'Webhook received successfully'}), 200
+    app.run(debug=True)
 
 thread1=threading.Thread(target=flask_func).start()
 
