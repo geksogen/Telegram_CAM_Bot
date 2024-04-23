@@ -60,18 +60,12 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-proxy = {
-     "scheme": "socks5",  # "socks4", "socks5" and "http" are supported
-     "hostname": "0.0.0.0",
-     "port": 8081
- }
 
 bot = Client(
  api_id=API_ID,
  api_hash=API_HASH,
  bot_token=BOT_TOKEN,
  name="ESP32-Cam-Bot",
- proxy=proxy,
 )
 
 # -4161519996    # test
