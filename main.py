@@ -9,24 +9,18 @@ import buttons
 import keyboards
 from custom_filters import button_filter
 import logging
-
-import os
 import asyncio
 
-from flask import Flask, request, jsonify
+import socket
 
 
-def flask_func():
-    app = Flask(__name__)
-    @app.route('/webhook', methods=['POST'])
-    def webhook_receiver():
-        data = request.json  # Get the JSON data from the incoming request
-        # Process the data and perform actions based on the event
-        print("Received webhook data:", data)
-        return jsonify({'message': 'Webhook received successfully'}), 200
-    app.run(debug=True)
 
-thread1=threading.Thread(target=flask_func).start()
+echoSocket = socket.socket()
+
+echoSocket.bind(("0.0.0.0", 8082))
+
+echoSocket.listen()
+
 
 API_ID = 21497875
 API_HASH = '7f95a52a1683a9be79d8813da6056a42'
@@ -69,6 +63,8 @@ mqttc.connect(MQTT_HOST, MQTT_PORT, MQTT_KEEPALIVE)
 tr = threading.Thread(target=mqttc.loop_start())
 tr.start()
 
+def pyrogram_func():
+    print('bot')
 
 bot = Client(
  api_id=API_ID,
