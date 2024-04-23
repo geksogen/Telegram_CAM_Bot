@@ -8,10 +8,24 @@ import threading
 import buttons
 import keyboards
 from custom_filters import button_filter
+import logging
 
-
+import os
 import asyncio
-from aiohttp import ClientSession
+
+from flask import Flask, request, jsonify
+
+
+def flask_func():
+    app = Flask(__name__)
+    @app.route('/webhook', methods=['POST'])
+    def webhook_receiver():
+        data = request.json  # Get the JSON data from the incoming request
+        # Process the data and perform actions based on the event
+        print("Received webhook data:", data)
+        return jsonify({'message': 'Webhook received successfully'}), 200
+
+thread1=threading.Thread(target=flask_func).start()
 
 API_ID = 21497875
 API_HASH = '7f95a52a1683a9be79d8813da6056a42'
@@ -62,16 +76,12 @@ bot = Client(
  name="ESP32-Cam-Bot",
 )
 
-session = ClientSession()
-
 # -4161519996    # test
 # -1002076082505 # prod
 # https://t.me/ESP32CAM_Pic_bot
 # https://t.me/raw_data_bot # ID chat
 
 chat_id = -4161519996
-
-
 
 @bot.on_message(filters=filters.command('start'))
 async def time_command(client: Client, message: Message):
@@ -93,10 +103,7 @@ async def main():
     await bot.start()
     print("Bot started!")
     await idle()
-    await session.close()
-
-#if __name__ == "__main__":
-#   bot.run()
 
 loop = asyncio.get_event_loop()
 loop.run_until_complete(main())
+
