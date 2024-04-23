@@ -94,4 +94,4 @@ async def time_command(client: Client, message: Message):
 #bot.run()
 
 if __name__ == "__main__":
-    bot.run(debug=True)
+    bot.run()
