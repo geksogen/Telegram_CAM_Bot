@@ -1,6 +1,5 @@
-from pyrogram import Client, filters
+from pyrogram import Client, filters, idle
 from pyrogram.types import Message
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 import paho.mqtt.client as mosquitto
 import time
 from datetime import datetime
@@ -10,10 +9,11 @@ import buttons
 import keyboards
 from custom_filters import button_filter
 
-import logging
+
 import logging.config
 
-
+import asyncio
+from aiohttp import ClientSession
 
 API_ID = 21497875
 API_HASH = '7f95a52a1683a9be79d8813da6056a42'
@@ -68,6 +68,8 @@ bot = Client(
  name="ESP32-Cam-Bot",
 )
 
+session = ClientSession()
+
 # -4161519996    # test
 # -1002076082505 # prod
 # https://t.me/ESP32CAM_Pic_bot
@@ -91,4 +93,16 @@ async def time_command(client: Client, message: Message):
     await bot.send_document(chat_id, document)
     #os.remove("images/photo.jpeg")
 
-bot.start()
+#bot.run()
+
+async def main():
+    await bot.start()
+    print("Bot started!")
+    await idle()
+    await session.close()
+
+#if __name__ == "__main__":
+#   bot.run()
+
+loop = asyncio.get_event_loop()
+loop.run_until_complete(main())
