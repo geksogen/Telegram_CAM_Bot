@@ -91,5 +91,7 @@ async def time_command(client: Client, message: Message):
     await bot.send_document(chat_id, document)
     #os.remove("images/photo.jpeg")
 
-bot.run()
+#bot.run()
 
+if __name__ == "__main__":
+    bot.run()
