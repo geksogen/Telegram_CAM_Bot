@@ -63,8 +63,6 @@ mqttc.connect(MQTT_HOST, MQTT_PORT, MQTT_KEEPALIVE)
 tr = threading.Thread(target=mqttc.loop_start())
 tr.start()
 
-def pyrogram_func():
-    print('bot')
 
 bot = Client(
  api_id=API_ID,
