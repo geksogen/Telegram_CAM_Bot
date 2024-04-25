@@ -14,11 +14,8 @@ import asyncio
 import socket
 
 
-
 echoSocket = socket.socket()
-
 echoSocket.bind(("0.0.0.0", 8082))
-
 echoSocket.listen()
 
 
