@@ -8,7 +8,7 @@ import threading
 import buttons
 import keyboards
 from custom_filters import button_filter
-import logging
+import logging as log
 import asyncio
 
 import socket
@@ -26,7 +26,7 @@ API_ID = 21497875
 API_HASH = '7f95a52a1683a9be79d8813da6056a42'
 BOT_TOKEN = '6088638632:AAEZAcA6HzQtCoeNnqY0x5ccMfbF5Z0610M'
 
-MQTT_HOST = "fairfoot513.cloud.shiftr.io"
+MQTT_HOST = "158.160.127.162"
 MQTT_PORT = 1883
 MQTT_KEEPALIVE = 60
 MQTT_LOGIN = "fairfoot513"
@@ -62,6 +62,7 @@ mqttc.connect(MQTT_HOST, MQTT_PORT, MQTT_KEEPALIVE)
 
 tr = threading.Thread(target=mqttc.loop_start())
 tr.start()
+log.info("Publisher is started...")
 
 
 bot = Client(
