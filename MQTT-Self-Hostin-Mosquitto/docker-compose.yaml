@@ -30,14 +30,12 @@ services:
       org.label-schema.group: "monitoring"
 
   prometheus:
-    image: prom/prometheus:v2.2.0-rc.0
-    container_name: prometheus
-    volumes:
-      - ./prometheus/:/etc/prometheus/
-      - prometheus_data:/prometheus
-    command: --web.enable-lifecycle --config.file=/etc/prometheus/prometheus.yml
-    restart: unless-stopped
+    image: prom/prometheus:v2.30.3
     ports:
-      - "9090:9090"
+      - 9000:9090
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - prometheus-data:/prometheus
+    command: --web.enable-lifecycle  --config.file=/etc/prometheus/prometheus.yml
     labels:
       org.label-schema.group: "monitoring"
