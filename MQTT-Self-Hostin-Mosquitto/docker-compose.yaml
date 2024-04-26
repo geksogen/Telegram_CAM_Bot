@@ -49,7 +49,6 @@ services:
     image: grafana/grafana:10.4.2
     container_name: grafana
     volumes:
-      - grafana-storage:/var/lib/grafana
       - ./grafana/provisioning:/etc/grafana/provisioning/
     environment:
       - GF_SECURITY_ADMIN_USER=${ADMIN_USER:-admin}
