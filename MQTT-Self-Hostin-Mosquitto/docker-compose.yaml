@@ -38,7 +38,7 @@ services:
       - '--web.console.templates=/usr/share/prometheus/consoles'
     restart: unless-stopped
     ports:
-      - 9090:9090
+      - "9090:9090"
     labels:
       org.label-schema.group: "monitoring"
 
