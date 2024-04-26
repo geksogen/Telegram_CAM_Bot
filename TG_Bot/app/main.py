@@ -8,7 +8,6 @@ import threading
 import buttons
 import keyboards
 from custom_filters import button_filter
-import logging as log
 import asyncio
 
 import socket
@@ -59,7 +58,6 @@ mqttc.connect(MQTT_HOST, MQTT_PORT, MQTT_KEEPALIVE)
 
 tr = threading.Thread(target=mqttc.loop_start())
 tr.start()
-log.info("Publisher is started...")
 
 
 bot = Client(

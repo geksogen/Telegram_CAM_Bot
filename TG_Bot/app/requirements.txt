@@ -3,6 +3,5 @@ paho-mqtt == 1.0
 datetime
 threaded
 tgcrypto
-logging
 asyncio
 aiohttp
