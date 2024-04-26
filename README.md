@@ -36,6 +36,13 @@ git clone https://github.com/geksogen/Telegram_CAM_Bot.git
 cd MQTT-Self-Hostin-Mosquitto
 docker-compose up -d
 docker-compose ps
+
+NAME                 IMAGE                                          COMMAND                  SERVICE              CREATED             STATUS          PORTS
+grafana              grafana/grafana:10.4.2                         "/run.sh"                grafana              About an hour ago   Up 55 minutes   0.0.0.0:3000->3000/tcp, :::3000->3000/tcp
+mosquitto            eclipse-mosquitto                              "/docker-entrypoint.…"   mosquitto            2 hours ago         Up 55 minutes   0.0.0.0:1883->1883/tcp, :::1883->1883/tcp, 0.0.0.0:9001->9001/tcp, :::9001->9001/tcp
+mosquitto-exporter   alessandrovito/mosquitto-exporter-docker:1.0   "/run.sh"                mosquitto-exporter   2 hours ago         Up 54 minutes   0.0.0.0:9180->9180/tcp, :::9180->9180/tcp
+prometheus           prom/prometheus:v2.51.2                        "/bin/prometheus --c…"   prometheus           About an hour ago   Up 55 minutes   0.0.0.0:9090->9090/tcp, :::9090->9090/tcp
+
 ```
 ### Regenerate password
 ```BASH
