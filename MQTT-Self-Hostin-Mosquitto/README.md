@@ -23,10 +23,8 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 ### Set up
 ```BASH
-nano docker-compose.yaml
-mkdir ./mosquitto
-nano ./mosquitto/mosquitto.conf
-nano ./mosquitto/passwd
+git clone https://github.com/geksogen/Telegram_CAM_Bot.git
+cd MQTT-Self-Hostin-Mosquitto
 docker-compose up -d
 docker-compose ps
 ```
