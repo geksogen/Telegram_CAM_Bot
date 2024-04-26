@@ -4,19 +4,10 @@ import paho.mqtt.client as mosquitto
 import time
 from datetime import datetime
 import threading
-
 import buttons
 import keyboards
 from custom_filters import button_filter
 import asyncio
-
-import socket
-
-
-echoSocket = socket.socket()
-echoSocket.bind(("0.0.0.0", 8082))
-echoSocket.listen()
-
 
 API_ID = 21497875
 API_HASH = '7f95a52a1683a9be79d8813da6056a42'
@@ -72,7 +63,7 @@ bot = Client(
 # https://t.me/ESP32CAM_Pic_bot
 # https://t.me/raw_data_bot # ID chat
 
-chat_id = -4161519996
+chat_id = -1002076082505
 
 @bot.on_message(filters=filters.command('start'))
 async def time_command(client: Client, message: Message):
