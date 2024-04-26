@@ -20,9 +20,9 @@ services:
     container_name: mosquitto-exporter
     #entrypoint: /run.sh
     environment:
-      - MOSQUITTO_USER = fairfoot513
-      - MOSQUITTO_PASSWORD= CBPB0ntFBGMo1x2t
-      - MOSQUITTO_HOSTNAME= 158.160.127.162
+      - MOSQUITTO_USER=${MS_USER:-fairfoot513}
+      - MOSQUITTO_PASSWORD=${MS_PASSWORD:-CBPB0ntFBGMo1x2t}
+      - MOSQUITTO_HOSTNAME=${MS_HOSTNAME:-mosquitto}
     restart: unless-stopped
     ports:
       - "9180:9180"
