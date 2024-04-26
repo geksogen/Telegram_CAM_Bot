@@ -3,7 +3,7 @@
 * Mosquitto 2.0.18
 * Docker-compose
 
-### Configure
+### Install Docker and Docker-compose
 ```BASH
 sudo apt update
 sudo apt install -y ca-certificates curl gnupg lsb-release
