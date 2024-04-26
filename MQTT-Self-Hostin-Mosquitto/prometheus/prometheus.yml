@@ -9,5 +9,3 @@ scrape_configs:
     metrics_path: '/prometheus-metrics'
     static_configs:
       - targets: ['mosquitto-exporter:9180']
-
-
