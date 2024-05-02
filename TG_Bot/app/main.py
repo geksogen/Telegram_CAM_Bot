@@ -9,6 +9,7 @@ import keyboards
 from custom_filters import button_filter
 import asyncio
 from PIL import Image, ImageDraw, ImageFont
+import os
 
 API_ID = 21497875
 API_HASH = '7f95a52a1683a9be79d8813da6056a42'
@@ -71,7 +72,7 @@ bot = Client(
 # https://t.me/ESP32CAM_Pic_bot
 # https://t.me/raw_data_bot # ID chat
 
-chat_id = -1002076082505
+chat_id = -4161519996
 
 @bot.on_message(filters=filters.command('start'))
 async def time_command(client: Client, message: Message):
@@ -85,7 +86,7 @@ async def time_command(client: Client, message: Message):
     time.sleep(1)
     document = open('photo.jpeg', 'rb')
     await bot.send_document(chat_id, document)
-    #os.remove("images/photo.jpeg")
+    os.remove("photo.jpeg")
 
 #bot.run()
 

@@ -6,3 +6,4 @@ tgcrypto
 asyncio
 aiohttp
 pillow
+os
