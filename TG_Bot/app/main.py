@@ -30,14 +30,6 @@ def on_message(client, userdata, msg):
         if msg.payload != b'None':
             with open(f"photo.jpeg", "wb") as file:
                 file.write(msg.payload)
-                time.sleep(1)
-
-    img = Image.open('photo.jpeg')
-    font = ImageFont.truetype("arial.ttf", size=20)
-    idraw = ImageDraw.Draw(img)
-    idraw.text((600, 550), str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')), font=font, fill="red")
-    img.save('photo.jpeg')
-    img.close()
 
 def publish(mqttc):
      msg_count = 0
@@ -85,6 +77,11 @@ async def time_command(client: Client, message: Message):
     # Publish
     publish(mqttc)
     time.sleep(1)
+    img = Image.open('photo.jpeg')
+    font = ImageFont.truetype("arial.ttf", size=20)
+    idraw = ImageDraw.Draw(img)
+    idraw.text((600, 550), str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')), font=font, fill="red")
+    img.save('photo.jpeg')
     document = open('photo.jpeg', 'rb')
     await bot.send_document(chat_id, document)
     #os.remove("images/photo.jpeg")
