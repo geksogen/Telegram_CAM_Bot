@@ -8,6 +8,8 @@ import buttons
 import keyboards
 from custom_filters import button_filter
 import asyncio
+import PIL
+
 
 API_ID = 21497875
 API_HASH = '7f95a52a1683a9be79d8813da6056a42'
