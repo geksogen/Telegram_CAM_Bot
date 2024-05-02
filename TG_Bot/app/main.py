@@ -37,6 +37,7 @@ def on_message(client, userdata, msg):
     idraw = ImageDraw.Draw(img)
     idraw.text((600, 550), str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')), font=font, fill="red")
     img.save('photo.jpeg')
+    img.close()
 
 def publish(mqttc):
      msg_count = 0
@@ -72,7 +73,7 @@ bot = Client(
 # https://t.me/ESP32CAM_Pic_bot
 # https://t.me/raw_data_bot # ID chat
 
-chat_id = -4161519996
+chat_id = -1002076082505
 
 @bot.on_message(filters=filters.command('start'))
 async def time_command(client: Client, message: Message):
