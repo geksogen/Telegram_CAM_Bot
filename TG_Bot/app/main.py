@@ -63,7 +63,7 @@ bot = Client(
 # https://t.me/ESP32CAM_Pic_bot
 # https://t.me/raw_data_bot # ID chat
 
-chat_id = -1002076082505
+chat_id = -4161519996
 
 @bot.on_message(filters=filters.command('start'))
 async def time_command(client: Client, message: Message):
