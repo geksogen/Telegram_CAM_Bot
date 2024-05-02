@@ -8,8 +8,6 @@ import buttons
 import keyboards
 from custom_filters import button_filter
 import asyncio
-from PIL import Image, ImageDraw, ImageFont
-import os
 
 API_ID = 21497875
 API_HASH = '7f95a52a1683a9be79d8813da6056a42'
@@ -30,13 +28,6 @@ def on_message(client, userdata, msg):
         if msg.payload != b'None':
             with open(f"photo.jpeg", "wb") as file:
                 file.write(msg.payload)
-                file.close()
-
-img = Image.open('photo.jpeg')
-font = ImageFont.truetype("arial.ttf", size=20)
-idraw = ImageDraw.Draw(img)
-idraw.text((600, 550), str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')), font=font, fill="red")
-img.save('photo.jpeg')
 
 def publish(mqttc):
      msg_count = 0
@@ -72,7 +63,7 @@ bot = Client(
 # https://t.me/ESP32CAM_Pic_bot
 # https://t.me/raw_data_bot # ID chat
 
-chat_id = -4161519996
+chat_id = -1002076082505
 
 @bot.on_message(filters=filters.command('start'))
 async def time_command(client: Client, message: Message):
@@ -86,7 +77,7 @@ async def time_command(client: Client, message: Message):
     time.sleep(1)
     document = open('photo.jpeg', 'rb')
     await bot.send_document(chat_id, document)
-    os.remove("photo.jpeg")
+    #os.remove("images/photo.jpeg")
 
 #bot.run()
 
