@@ -8,6 +8,7 @@ import buttons
 import keyboards
 from custom_filters import button_filter
 import asyncio
+from PIL import Image, ImageDraw, ImageFont
 
 API_ID = 21497875
 API_HASH = '7f95a52a1683a9be79d8813da6056a42'
@@ -28,6 +29,13 @@ def on_message(client, userdata, msg):
         if msg.payload != b'None':
             with open(f"photo.jpeg", "wb") as file:
                 file.write(msg.payload)
+                file.close()
+
+img = Image.open('photo.jpeg')
+font = ImageFont.truetype("arial.ttf", size=20)
+idraw = ImageDraw.Draw(img)
+idraw.text((600, 550), str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')), font=font, fill="red")
+img.save('photo.jpeg')
 
 def publish(mqttc):
      msg_count = 0
