@@ -65,7 +65,7 @@ bot = Client(
 # https://t.me/ESP32CAM_Pic_bot
 # https://t.me/raw_data_bot # ID chat
 
-chat_id = -1002076082505
+chat_id = -4161519996
 
 @bot.on_message(filters=filters.command('start'))
 async def time_command(client: Client, message: Message):
@@ -81,8 +81,9 @@ async def time_command(client: Client, message: Message):
     font = ImageFont.truetype("arial.ttf", size=20)
     idraw = ImageDraw.Draw(img)
     idraw.text((600, 550), str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')), font=font, fill="red")
-    img.save('photo.jpeg')
-    document = open('photo.jpeg', 'rb')
+    img.save('photo_date.jpeg')
+    time.sleep(1)
+    document = open('photo_date.jpeg', 'rb')
     await bot.send_document(chat_id, document)
     #os.remove("images/photo.jpeg")
 
