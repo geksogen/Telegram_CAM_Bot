@@ -9,18 +9,21 @@ import keyboards
 from custom_filters import button_filter
 import asyncio
 from PIL import Image, ImageFont, ImageDraw
+import pytz
 
+d = datetime.now()
 
 API_ID = 21497875
 API_HASH = '7f95a52a1683a9be79d8813da6056a42'
 BOT_TOKEN = '6088638632:AAEZAcA6HzQtCoeNnqY0x5ccMfbF5Z0610M'
-
 MQTT_HOST = "158.160.127.162"
 MQTT_PORT = 1883
 MQTT_KEEPALIVE = 60
 MQTT_LOGIN = "fairfoot513"
 MQTT_PASSWORD = "CBPB0ntFBGMo1x2t"
 CLIENT_ID = "MQTT-Telegram-Bot"
+
+
 
 def on_connect(client, userdata, flags, rc):
     client.subscribe("PICTURE")
@@ -80,9 +83,8 @@ async def time_command(client: Client, message: Message):
     img = Image.open('photo.jpeg')
     font = ImageFont.truetype("verdana.ttf", size=20)
     idraw = ImageDraw.Draw(img)
-    idraw.text((550, 550), str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')), font=font, fill="red")
+    idraw.text((500, 550), str(pytz.timezone('Europe/Moscow').localize(d).strftime('%Y-%m-%d %H:%M:%S%z')), font=font, fill="red")
     img.save('photo_date.jpeg')
-    time.sleep(1)
     document = open('photo_date.jpeg', 'rb')
     await bot.send_document(chat_id, document)
     #os.remove("images/photo.jpeg")
