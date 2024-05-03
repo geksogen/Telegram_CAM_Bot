@@ -11,8 +11,6 @@ import asyncio
 from PIL import Image, ImageFont, ImageDraw
 import pytz
 
-d = datetime.now()
-
 API_ID = 21497875
 API_HASH = '7f95a52a1683a9be79d8813da6056a42'
 BOT_TOKEN = '6088638632:AAEZAcA6HzQtCoeNnqY0x5ccMfbF5Z0610M'
@@ -83,7 +81,7 @@ async def time_command(client: Client, message: Message):
     img = Image.open('photo.jpeg')
     font = ImageFont.truetype("verdana.ttf", size=20)
     idraw = ImageDraw.Draw(img)
-    idraw.text((500, 550), str(pytz.timezone('Europe/Moscow').localize(d).strftime('%Y-%m-%d %H:%M:%S%z')), font=font, fill="red")
+    idraw.text((500, 550), str(datetime.now(pytz.timezone('Europe/Moscow')).strftime('%Y-%m-%d %H:%M:%S%z')), font=font, fill="red")
     img.save('photo_date.jpeg')
     document = open('photo_date.jpeg', 'rb')
     await bot.send_document(chat_id, document)
