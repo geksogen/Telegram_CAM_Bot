@@ -1,5 +1,8 @@
 # Telegram Bot for ESP32-CAM
 
+In this , you’ll create a Telegram bot to interact with the ESP32-CAM to request a new photo. 
+You can request a new photo using your Telegram account from anywhere. You just need to have access to the internet on your smartphone.
+
 ![alt text](esp32-cam.jpg "Architecture")
 
 ## Architecture
